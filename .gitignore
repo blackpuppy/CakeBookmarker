@@ -1,0 +1,5 @@
+# local files and folders #
+###########################
+/*.local/
+vagrant/puphpet/files/dot/ssh
+.vagrant
