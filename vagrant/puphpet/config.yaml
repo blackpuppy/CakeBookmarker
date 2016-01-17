@@ -19,6 +19,7 @@ vagrantfile:
             virtualbox:
                 modifyvm:
                     natdnshostresolver1: 'on'
+                    name: 'cakebookmarker'
                 showgui: '0'
             vmware:
                 numvcpus: 1
@@ -88,9 +89,10 @@ users_groups:
 locale:
     install: '1'
     settings:
-        default_locale: en_US.UTF-8
+        default_locale: en_US.utf8
         locales:
-            - en_US.UTF-8
+            - en_GB.utf8
+            - en_US.utf8
 firewall:
     install: '1'
     rules: {  }
@@ -227,7 +229,7 @@ php:
         display_errors: 'On'
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
-        date.timezone: UTC
+        date.timezone: Asia/Shanghai
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
@@ -272,11 +274,9 @@ drush:
     install: '0'
     version: 6.3.0
 ruby:
-    install: '1'
+    install: '0'
     versions:
         rv_kreoc91sw764:
-            default: '1'
-            bundler: '1'
             version: 1.9.3
 python:
     install: '1'
@@ -337,11 +337,11 @@ mysql:
     databases:
         mysqlnd_uv6rubb5if14:
             name: cakebookmarks
-            sql: database/backup/cakebookmarks
+            sql: /home/vagrant/cakebookmarker/database/backup/cakebookmarks.sql
     grants:
         mysqlng_qvp5z9mvlhjq:
             user: bookworm
-            table: '*.*'
+            table: 'cakebookmarks.*'
             privileges:
                 - ALL
 postgresql:
