@@ -1,0 +1,19 @@
+db:
+  image: mysql
+  ports:
+    - "13306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+fpm:
+  image: occitech/cakephp:5-fpm
+web:
+  build: .
+  command: gulp
+  volumes:
+    - .:/src
+    # - /src/node_modules
+  ports:
+    - "80:80"
+  links:
+    - db
+    - fpm
