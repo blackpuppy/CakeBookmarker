@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Collection\Collection;
 
 /**
  * Bookmark Entity.
@@ -16,8 +17,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $modified
  * @property \App\Model\Entity\Tag[] $tags
  */
-class Bookmark extends Entity
-{
+class Bookmark extends Entity {
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -31,5 +31,21 @@ class Bookmark extends Entity
     protected $_accessible = [
         '*' => true,
         'id' => false,
+        'tag_string' => true,
     ];
+
+    protected function _getTagString()
+    {
+        if (isset($this->_properties['tag_string'])) {
+            return $this->_properties['tag_string'];
+        }
+        if (empty($this->tags)) {
+            return '';
+        }
+        $tags = new Collection($this->tags);
+        $str = $tags->reduce(function ($string, $tag) {
+            return $string . $tag->title . ', ';
+        }, '');
+        return trim($str, ', ');
+    }
 }
