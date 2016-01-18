@@ -111,11 +111,11 @@ nginx:
         names_hash_bucket_size: 128
     upstreams: {  }
     vhosts:
-        nxv_boqyfw7nacq1:
+        cakebookmarker:
             server_name: cakebookmarker.local
             server_aliases:
                 - www.cakebookmarker.local
-            www_root: /home/vagrant/cakebookmarker
+            www_root: /home/vagrant/cakebookmarker/bookmarker/webroot
             listen_port: '80'
             index_files:
                 - index.html
