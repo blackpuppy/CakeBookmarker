@@ -79,4 +79,19 @@ class BookmarksTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         return $rules;
     }
+
+    // The $query argument is a query builder instance.
+    // The $options array will contain the 'tags' option we passed
+    // to find('tagged') in our controller action.
+    public function findTagged(Query $query, array $options)
+    {
+        return $this->find()
+            ->distinct(['Bookmarks.id'])
+            ->matching('Tags', function ($q) use ($options) {
+                if (empty($options['tags'])) {
+                    return $q->where(['Tags.title IS' => null]);
+                }
+                return $q->where(['Tags.title IN' => $options['tags']]);
+            });
+    }
 }
