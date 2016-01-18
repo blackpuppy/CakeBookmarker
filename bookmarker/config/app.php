@@ -219,7 +219,7 @@ return [
             'password' => 'P@55w0rd',
             'database' => 'cakebookmarks',
             'encoding' => 'utf8',
-            // 'timezone' => 'Asia/Shanghai',
+            'timezone' => '+8:00',
             'cacheMetadata' => true,
             'log' => false,
 
@@ -256,7 +256,7 @@ return [
             'password' => 'secret',
             'database' => 'test_myapp',
             'encoding' => 'utf8',
-            'timezone' => 'UTC',
+            'timezone' => '+8:00',
             'cacheMetadata' => true,
             'quoteIdentifiers' => false,
             'log' => false,
